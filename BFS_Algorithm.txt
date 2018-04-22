@@ -1,0 +1,28 @@
+
+BFS(G,s)
+{
+	for each u in V              // initialization
+	{
+		color[u] = white;
+		d[u] = infinity
+		pred[u] = null
+	}
+	color[s] = gray       // initialize source s
+	d[s] = 0
+	Q = {s}               // put s in the queue
+	while (Q is nonempty)
+	{
+		u = Q.Dequeue()   // u is the next to visit
+		for each v in Adj[u]
+		{
+			if (color[v] == white)  // if neighbor v undiscovered
+			{
+				color[v] = gray   // ..mark it discovered
+				d[v] = d[u] + 1   // ..set its distance
+				pred[v] = u       // ..and its predecessor
+				Q.Enqueue(v)      // ..put it in the queue
+			}
+		}
+		color[u] = black           // we are done with u
+	}
+}
